@@ -1,5 +1,5 @@
 ﻿  OpenGL GKOM.cpp
 c:\users\asus\source\repos\opengl gkom\opengl gkom\shader.h(63): warning C4101: 'infoLog': unreferenced local variable
 c:\users\asus\source\repos\opengl gkom\opengl gkom\shader.h(62): warning C4101: 'success': unreferenced local variable
-c:\users\asus\source\repos\opengl gkom\opengl gkom\opengl gkom.cpp(144): warning C4018: '<': signed/unsigned mismatch
+c:\users\asus\source\repos\opengl gkom\opengl gkom\opengl gkom.cpp(143): warning C4018: '<': signed/unsigned mismatch
   OpenGL GKOM.vcxproj -> C:\Users\Asus\source\repos\OpenGL GKOM\Debug\OpenGL GKOM.exe

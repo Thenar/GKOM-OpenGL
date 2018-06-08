@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="D:\Thenar\weiti\GKOM\OpenGL\texture.jpg" />
+    <Image Include="D:\Thenar\weiti\GKOM\OpenGL\wood.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

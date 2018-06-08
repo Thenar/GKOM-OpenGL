@@ -24,7 +24,9 @@ public:
 	~ObjectManager();
 
 	float* getBoxVert();
+
 	glm::vec3 getPosition(int i);
+
 	std::size_t getVertSize();
 
 	glm::vec3 getRotation(int i);
@@ -32,5 +34,10 @@ public:
 	glm::mat4 getBoxModel(int i);
 
 	int getNumberOfBoxes();
+
+	std::size_t getPlaneSize();
+
+	float* getPlaneVert();
+
 };
 

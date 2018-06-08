@@ -60,5 +60,8 @@
     <Image Include="D:\Thenar\weiti\GKOM\OpenGL\texture.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="D:\Thenar\weiti\GKOM\OpenGL\wood.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

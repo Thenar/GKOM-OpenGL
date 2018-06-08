@@ -4,13 +4,28 @@
 ObjectManager::ObjectManager()
 {
 	numberOfBoxes = 12;
-	boxRot =  new glm::vec3[numberOfBoxes];
+	boxRot = new glm::vec3[numberOfBoxes];
 	boxVertices = new float[210];
 	positions = new glm::vec3[numberOfBoxes];
 	boxModel = new glm::mat4[numberOfBoxes];
 	boxAngle = new float[numberOfBoxes];
 	currentBox = 0;
 	rotSpeed = new float[numberOfBoxes];
+	planeVert = new float[30];
+
+	float plane[] = {
+		-10.0f, 0.0f, -10.0f, 0.0f, 0.0f,
+		10.0f, 0.0f, -10.0f, 1.0f, 0.0f,
+		-10.0f, 0.0f, 10.f, 1.0f, 1.0f,
+		-10.f, 0.0f, 10.f, 1.0f, 1.0f,
+		10.0f, 0.0f, 10.0f, 0.0f, 1.0f,
+		10.f, 0.0f, -10.0f, 0.0f, 0.0f,
+	};
+
+	for (int i = 0; i < 30; i++)
+	{
+		planeVert[i] = plane[i];
+	}
 
 	for (int i = 0; i < numberOfBoxes; i++) {
 		rotSpeed[i] = 0.1f;
@@ -28,50 +43,52 @@ ObjectManager::ObjectManager()
 		boxRot[i] = glm::vec3(a, b, c);
 
 	}
+	
+	float x = 0.8f, y = 1.5f, z = 0.2f;
 
 	float box[] = {
 		//box
-		-0.8f, -1.5f, -0.2f,  0.0f, 0.0f,
-		0.8f, -1.5f, -0.2f,  1.0f, 0.0f,
-		0.8f,  1.5f, -0.2f,  1.0f, 1.0f,
-		0.8f,  1.5f, -0.2f,  1.0f, 1.0f,
-		-0.8f,  1.5f, -0.2f,  0.0f, 1.0f,
-		-0.8f, -1.5f, -0.2f,  0.0f, 0.0f,
+		-x, -y, -z,  0.0f, 0.0f,
+		x, -y, -z,  1.0f, 0.0f,
+		x,  y, -z,  1.0f, 1.0f,
+		x,  y, -z,  1.0f, 1.0f,
+		-x,  y, -z,  0.0f, 1.0f,
+		-x, -y, -z,  0.0f, 0.0f,
 
-		-0.8f, -1.5f,  0.2f,  0.0f, 0.0f,
-		0.8f, -1.5f,  0.2f,  1.0f, 0.0f,
-		0.8f,  1.5f,  0.2f,  1.0f, 1.0f,
-		0.8f,  1.5f,  0.2f,  1.0f, 1.0f,
-		-0.8f,  1.5f,  0.2f,  0.0f, 1.0f,
-		-0.8f, -1.5f,  0.2f,  0.0f, 0.0f,
+		-x, -y,  z,  0.0f, 0.0f,
+		x, -y,  z,  1.0f, 0.0f,
+		x,  y,  z,  1.0f, 1.0f,
+		x,  y,  z,  1.0f, 1.0f,
+		-x,  y,  z,  0.0f, 1.0f,
+		-x, -y,  z,  0.0f, 0.0f,
 
-		-0.8f,  1.5f,  0.2f,  1.0f, 0.0f,
-		-0.8f,  1.5f, -0.2f,  1.0f, 1.0f,
-		-0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
-		-0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
-		-0.8f, -1.5f,  0.2f,  0.0f, 0.0f,
-		-0.8f,  1.5f,  0.2f,  1.0f, 0.0f,
+		-x,  y,  z,  1.0f, 0.0f,
+		-x,  y, -z,  1.0f, 1.0f,
+		-x, -y, -z,  0.0f, 1.0f,
+		-x, -y, -z,  0.0f, 1.0f,
+		-x, -y,  z,  0.0f, 0.0f,
+		-x,  y,  z,  1.0f, 0.0f,
 
-		0.8f,  1.5f,  0.2f,  1.0f, 0.0f,
-		0.8f,  1.5f, -0.2f,  1.0f, 1.0f,
-		0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
-		0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
-		0.8f, -1.5f,  0.2f,  0.0f, 0.0f,
-		0.8f,  1.5f,  0.2f,  1.0f, 0.0f,
+		x,  y,  z,  1.0f, 0.0f,
+		x,  y, -z,  1.0f, 1.0f,
+		x, -y, -z,  0.0f, 1.0f,
+		x, -y, -z,  0.0f, 1.0f,
+		x, -y,  z,  0.0f, 0.0f,
+		x,  y,  z,  1.0f, 0.0f,
 
-		-0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
-		0.8f, -1.5f, -0.2f,  1.0f, 1.0f,
-		0.8f, -1.5f,  0.2f,  1.0f, 0.0f,
-		0.8f, -1.5f,  0.2f,  1.0f, 0.0f,
-		-0.8f, -1.5f,  0.2f,  0.0f, 0.0f,
-		-0.8f, -1.5f, -0.2f,  0.0f, 1.0f,
+		-x, -y, -z,  0.0f, 1.0f,
+		x, -y, -z,  1.0f, 1.0f,
+		x, -y,  z,  1.0f, 0.0f,
+		x, -y,  z,  1.0f, 0.0f,
+		-x, -y,  z,  0.0f, 0.0f,
+		-x, -y, -z,  0.0f, 1.0f,
 
-		-0.8f,  1.5f, -0.2f,  0.0f, 1.0f,
-		0.8f,  1.5f, -0.2f,  1.0f, 1.0f,
-		0.8f,  1.5f,  0.2f,  1.0f, 0.0f,
-		0.8f,  1.5f,  0.2f,  0.0f, 1.0f,
-		-0.8f,  1.5f,  0.2f,  1.0f, 1.0f,
-		-0.8f,  1.5f, -0.2f,  1.0f, 0.0f,
+		-x,  y, -z,  0.0f, 1.0f,
+		x,  y, -z,  1.0f, 1.0f,
+		x,  y,  z,  1.0f, 0.0f,
+		x,  y,  z,  0.0f, 1.0f,
+		-x,  y,  z,  1.0f, 1.0f,
+		-x,  y, -z,  1.0f, 0.0f,
 		//plane
 
 		- 10.0f, 0.0f, -10.0f,  0.0f, 0.0f,
@@ -84,13 +101,11 @@ ObjectManager::ObjectManager()
 	};
 
 	
-
 	for (int i = 0; i < 210; i++) {
 		
 		boxVertices[i] = box[i];
 
 	}
-
 
 	float offset = 0.0f;
 
@@ -165,5 +180,21 @@ glm::mat4 ObjectManager::getBoxModel(int i)
 int ObjectManager::getNumberOfBoxes()
 {
 	return numberOfBoxes;
+}
+
+std::size_t ObjectManager::getPlaneSize()
+{
+	std::size_t size = 0;
+
+	for (int i = 0; i < 180; i++) {
+		size += sizeof(planeVert[i]);
+	}
+
+	return size;
+}
+
+float * ObjectManager::getPlaneVert()
+{
+	return planeVert;
 }
 
